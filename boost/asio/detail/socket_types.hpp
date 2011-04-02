@@ -122,7 +122,12 @@ const int max_iov_len = 16;
 typedef int socket_type;
 const int invalid_socket = -1;
 const int socket_error_retval = -1;
+// @Moss - Some platforms do not define it (Android)
+#if defined(INET_ADDRSTRLEN)
 const int max_addr_v4_str_len = INET_ADDRSTRLEN;
+#else // defined(INET_ADDRSTRLEN)
+const int max_addr_v4_str_len = 16;
+#endif // defined(INET_ADDRSTRLEN)
 #if defined(INET6_ADDRSTRLEN)
 const int max_addr_v6_str_len = INET6_ADDRSTRLEN + 1 + IF_NAMESIZE;
 #else // defined(INET6_ADDRSTRLEN)
